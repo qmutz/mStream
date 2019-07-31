@@ -42,87 +42,87 @@ var MSTREAMAPI = (function () {
   }
 
   mstreamModule.dirparser = function (directory, filetypes, callback) {
-    makePOSTRequest('/dirparser', { dir: directory }, callback);
+    makePOSTRequest('./dirparser', { dir: directory }, callback);
   }
 
   mstreamModule.recursiveScan = function (directory, filetypes, callback) {
-    makePOSTRequest('/files/recursive-scan', { dir: directory }, callback);
+    makePOSTRequest('./files/recursive-scan', { dir: directory }, callback);
   }
 
   mstreamModule.savePlaylist = function (title, songs, callback) {
-    makePOSTRequest('/playlist/save', { title: title, songs: songs }, callback);
+    makePOSTRequest('./playlist/save', { title: title, songs: songs }, callback);
   }
 
   mstreamModule.deletePlaylist = function (playlistname, callback) {
-    makePOSTRequest('/playlist/delete', { playlistname: playlistname }, callback);
+    makePOSTRequest('./playlist/delete', { playlistname: playlistname }, callback);
   }
 
   mstreamModule.removePlaylistSong = function (lokiId, callback) {
-    makePOSTRequest('/playlist/remove-song', { lokiid: lokiId }, callback);
+    makePOSTRequest('./playlist/remove-song', { lokiid: lokiId }, callback);
   }
 
   mstreamModule.loadPlaylist = function (playlistname, callback) {
-    makePOSTRequest('/playlist/load', { playlistname: playlistname }, callback);
+    makePOSTRequest('./playlist/load', { playlistname: playlistname }, callback);
   }
 
   mstreamModule.getAllPlaylists = function (callback) {
-    makeGETRequest('/playlist/getall', false, callback);
+    makeGETRequest('./playlist/getall', false, callback);
   }
 
   mstreamModule.addToPlaylist = function (playlist, song, callback) {
-    makePOSTRequest('/playlist/add-song', { playlist: playlist, song: song }, callback);
+    makePOSTRequest('./playlist/add-song', { playlist: playlist, song: song }, callback);
   }
 
   mstreamModule.search = function (searchTerm, callback) {
-    makePOSTRequest('/db/search', { search: searchTerm }, callback);
+    makePOSTRequest('./db/search', { search: searchTerm }, callback);
   }
 
   mstreamModule.artists = function (callback) {
-    makeGETRequest('/db/artists', false, callback);
+    makeGETRequest('./db/artists', false, callback);
   }
 
   mstreamModule.albums = function (callback) {
-    makeGETRequest('/db/albums', false, callback);
+    makeGETRequest('./db/albums', false, callback);
   }
 
   mstreamModule.artistAlbums = function (artist, callback) {
-    makePOSTRequest("/db/artists-albums", { artist: artist }, callback);
+    makePOSTRequest("./db/artists-albums", { artist: artist }, callback);
   }
 
   mstreamModule.albumSongs = function (album, artist, callback) {
-    makePOSTRequest("/db/album-songs", { album: album, artist: artist }, callback);
+    makePOSTRequest("./db/album-songs", { album: album, artist: artist }, callback);
   }
 
   mstreamModule.dbStatus = function (callback) {
-    makeGETRequest("/db/status", false, callback);
+    makeGETRequest("./db/status", false, callback);
   }
 
   mstreamModule.dbScan = function (callback) {
-    makeGETRequest("/db/recursive-scan", false, callback);
+    makeGETRequest("./db/recursive-scan", false, callback);
   }
 
   mstreamModule.makeShared = function (playlist, shareTimeInDays, callback) {
-    makePOSTRequest("/shared/make-shared", { time: shareTimeInDays, playlist: playlist }, callback);
+    makePOSTRequest("./shared/make-shared", { time: shareTimeInDays, playlist: playlist }, callback);
   }
 
   mstreamModule.rateSong = function (filepath, rating, callback) {
-    makePOSTRequest("/db/rate-song", { filepath: filepath, rating: rating }, callback);
+    makePOSTRequest("./db/rate-song", { filepath: filepath, rating: rating }, callback);
   }
 
   mstreamModule.getRated = function (callback) {
-    makeGETRequest("/db/get-rated", false, callback);
+    makeGETRequest("./db/get-rated", false, callback);
   }
 
   mstreamModule.getRecentlyAdded = function (limit, callback) {
-    makePOSTRequest("/db/recent/added", { limit: limit }, callback);
+    makePOSTRequest("./db/recent/added", { limit: limit }, callback);
   }
 
   mstreamModule.lookupMetadata = function (filepath, callback) {
-    makePOSTRequest("/db/metadata", { filepath: filepath }, callback);
+    makePOSTRequest("./db/metadata", { filepath: filepath }, callback);
   }
 
   mstreamModule.getRandomSong = function (postObject, callback) {
-    makePOSTRequest("/db/random-songs", postObject, callback);
+    makePOSTRequest("./db/random-songs", postObject, callback);
   }
 
   mstreamModule.generateFederationInvite = function (postObject, callback) {
@@ -139,12 +139,12 @@ var MSTREAMAPI = (function () {
 
   // Scrobble
   mstreamModule.scrobbleByMetadata = function (artist, album, trackName, callback) {
-    makePOSTRequest("/lastfm/scrobble-by-metadata", { artist: artist, album: album, track: trackName }, callback);
+    makePOSTRequest("./lastfm/scrobble-by-metadata", { artist: artist, album: album, track: trackName }, callback);
   }
 
   // LOGIN
   mstreamModule.login = function (username, password, callback) {
-    makePOSTRequest("/login", { username: username, password: password }, callback);
+    makePOSTRequest("./login", { username: username, password: password }, callback);
   }
   mstreamModule.updateCurrentServer = function (username, token, vpaths) {
     mstreamModule.currentServer.user = username;
@@ -153,7 +153,7 @@ var MSTREAMAPI = (function () {
   }
 
   mstreamModule.ping = function (callback) {
-    makeGETRequest("/ping", false, callback);
+    makeGETRequest("./ping", false, callback);
   }
 
 
@@ -167,7 +167,7 @@ var MSTREAMAPI = (function () {
       filepath = filepath.substr(1);
     }
 
-    var url = mstreamModule.currentServer.host + '/media/' + filepath;
+    var url = mstreamModule.currentServer.host + './media/' + filepath;
     if (mstreamModule.currentServer.token) {
       url = url + '?token=' + mstreamModule.currentServer.token;
     }
