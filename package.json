@@ -93,7 +93,7 @@
     "commander": "^6.1.0",
     "electron-updater": "^4.3.5",
     "express": "^4.17.1",
-    "fast-xml-parser": "^3.17.4",
+    "fast-xml-parser": "^4.4.1",
     "ffbinaries": "^1.1.4",
     "fluent-ffmpeg": "^2.1.2",
     "inquirer": "^7.3.3",
